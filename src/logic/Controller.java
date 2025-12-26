@@ -5,6 +5,7 @@
 package logic;
 
 import domain.KategorijaOsobe;
+import domain.Osoba;
 import domain.Recepcionar;
 import repository.db.DatabaseBroker;
 import java.sql.*;
@@ -50,6 +51,24 @@ public class Controller {
         try{
             List<KategorijaOsobe> kategorije = dbbr.returnCategories();
             return kategorije;
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return null;
+    }
+    
+    public List<Osoba> getAllPersons(){
+        
+        try{
+            dbbr.connect();           
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }  
+        try{
+            List<Osoba> osobe = dbbr.returnPersons();
+            return osobe;
         }
         catch(Exception ex){
             System.out.println("Doslo je do greske. "+ex.getMessage());

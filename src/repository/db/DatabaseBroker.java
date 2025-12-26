@@ -90,4 +90,28 @@ public class DatabaseBroker {
         return null;
     }
     
+    public List<Osoba> returnPersons(){
+        
+        try{
+            String query = "SELECT * FROM osoba";
+        
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            
+            List<Osoba> osobe = new ArrayList<>();
+            while(rs.next()){
+                KategorijaOsobe kategorija = new KategorijaOsobe();
+                kategorija.setId(rs.getLong("idKategorijaOsobe"));
+                Osoba osoba = new Osoba(rs.getLong("idOsoba"), rs.getString("ime"), rs.getString("prezime"), rs.getString("email"), rs.getString("brojTelefona"), kategorija);
+                osobe.add(osoba);
+            }
+            
+            return osobe;
+        }
+        catch(SQLException ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        
+        return null;
+    }
 }

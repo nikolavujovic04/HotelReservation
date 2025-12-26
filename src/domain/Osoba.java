@@ -9,7 +9,7 @@ package domain;
  * @author Nikola
  */
 public class Osoba {
-    private int id;
+    private long id;
     private String ime;
     private String prezime;
     private String email;
@@ -19,7 +19,7 @@ public class Osoba {
     public Osoba() {
     }
 
-    public Osoba(int id, String ime, String prezime, String email, String brojTelefona, KategorijaOsobe kategorija) {
+    public Osoba(long id, String ime, String prezime, String email, String brojTelefona, KategorijaOsobe kategorija) {
         this.id = id;
         this.ime = ime;
         this.prezime = prezime;
@@ -28,11 +28,11 @@ public class Osoba {
         this.kategorija = kategorija;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
