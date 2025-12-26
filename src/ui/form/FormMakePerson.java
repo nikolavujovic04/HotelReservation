@@ -143,7 +143,19 @@ public class FormMakePerson extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-            Osoba osoba = new Osoba();
+            Osoba osoba = new Osoba(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), (KategorijaOsobe) jComboBox1.getSelectedItem());
+            Controller controller = new Controller();
+            List<Osoba> osobeBaza = controller.getAllPersons();
+            int postoji = 0;
+            for (Osoba osobaB : osobeBaza) {
+                if(!osoba.getBrojTelefona().equals(osobaB.getBrojTelefona())){
+                    postoji = 1;
+                }
+            }
+            
+            if(postoji==0){
+                JOptionPane.showMessageDialog(this, "Doslo je do greske. Vec postoji rezervacija sa tim brojem telefona u sistemu", "GRESKA", JOptionPane.ERROR_MESSAGE);
+            }
         }
         catch(Exception ex){
             System.out.println("Doslo je do greske. "+ex.getMessage());
