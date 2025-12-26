@@ -146,16 +146,24 @@ public class FormMakePerson extends javax.swing.JDialog {
             Osoba osoba = new Osoba(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), jTextField4.getText(), (KategorijaOsobe) jComboBox1.getSelectedItem());
             Controller controller = new Controller();
             List<Osoba> osobeBaza = controller.getAllPersons();
-            int postoji = 0;
-            for (Osoba osobaB : osobeBaza) {
-                if(!osoba.getBrojTelefona().equals(osobaB.getBrojTelefona())){
-                    postoji = 1;
-                }
+            
+            if(osoba.getIme().isEmpty() || osoba.getPrezime().isEmpty() || osoba.getBrojTelefona().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Sva polja moraju biti popunjena!", "GRESKA", JOptionPane.ERROR_MESSAGE);
+                return;
             }
             
-            if(postoji==0){
-                JOptionPane.showMessageDialog(this, "Doslo je do greske. Vec postoji rezervacija sa tim brojem telefona u sistemu", "GRESKA", JOptionPane.ERROR_MESSAGE);
+            if(!osoba.getEmail().matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,6}$")) {
+                JOptionPane.showMessageDialog(this, "Email nije u pravom formatu", "GRESKA", JOptionPane.ERROR_MESSAGE);
+                return;
             }
+            
+            if(controller.postojiTelEmail(osoba.getBrojTelefona(), osoba.getEmail())){
+                JOptionPane.showMessageDialog(this, "Postoji osoba sa tim brojem telefona ili email-om u sistemu", "GRESKA", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
+            controller.fillPerson(osoba);
+            JOptionPane.showMessageDialog(this, "Osoba je uspesno uneta u sistem", "DODATA OSOBA", JOptionPane.INFORMATION_MESSAGE);
         }
         catch(Exception ex){
             System.out.println("Doslo je do greske. "+ex.getMessage());

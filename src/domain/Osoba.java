@@ -28,6 +28,16 @@ public class Osoba {
         this.kategorija = kategorija;
     }
 
+    public Osoba(String ime, String prezime, String email, String brojTelefona, KategorijaOsobe kategorija) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.email = email;
+        this.brojTelefona = brojTelefona;
+        this.kategorija = kategorija;
+    }
+    
+    
+
     public long getId() {
         return id;
     }

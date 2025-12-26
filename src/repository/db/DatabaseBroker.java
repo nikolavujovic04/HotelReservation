@@ -70,26 +70,6 @@ public class DatabaseBroker {
         return null;
     }
     
-    public List<KategorijaOsobe> returnCategories(){
-        try{
-            String query = "SELECT * FROM kategorijaosobe";
-            Statement statement = connection.createStatement();
-            
-            ResultSet rs = statement.executeQuery(query);
-            List<KategorijaOsobe> kategorije = new ArrayList<>();
-            while(rs.next()){
-                KategorijaOsobe kategorija = new KategorijaOsobe( rs.getLong("idKategorijaOsobe"), rs.getString("tipOsobe"), rs.getDouble("popust"));
-                kategorije.add(kategorija);
-            }
-            return kategorije;
-        }
-        catch(SQLException ex){
-            System.out.println("Doslo je do greske. "+ex.getMessage());
-        }
-        
-        return null;
-    }
-    
     public List<Osoba> returnPersons(){
         
         try{
@@ -113,5 +93,63 @@ public class DatabaseBroker {
         }
         
         return null;
+    }
+    
+    
+    public List<KategorijaOsobe> returnCategories(){
+        try{
+            String query = "SELECT * FROM kategorijaosobe";
+            Statement statement = connection.createStatement();
+            
+            ResultSet rs = statement.executeQuery(query);
+            List<KategorijaOsobe> kategorije = new ArrayList<>();
+            while(rs.next()){
+                KategorijaOsobe kategorija = new KategorijaOsobe( rs.getLong("idKategorijaOsobe"), rs.getString("tipOsobe"), rs.getDouble("popust"));
+                kategorije.add(kategorija);
+            }
+            return kategorije;
+        }
+        catch(SQLException ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        
+        return null;
+    }
+    
+    public boolean postojiBrojIliEmail(String brojTelefona, String email) {
+        String query = "SELECT 1 FROM osoba WHERE brojTelefona = ? OR email = ?";
+        try{
+            PreparedStatement ps = connection.prepareStatement(query);
+        
+            ps.setString(1, brojTelefona);
+            ps.setString(2, email);
+            
+            ResultSet rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException ex) {
+            System.out.println("Doslo je do greske: " + ex.getMessage());
+        }
+
+        return false;
+    }
+    
+    public void insertPerson(Osoba osoba) {
+        String query = "INSERT INTO osoba(ime, prezime, email, brojTelefona, idKategorijaOsobe) VALUES (?,?,?,?,?)";
+        try{
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, osoba.getIme());
+            ps.setString(2, osoba.getPrezime());
+            ps.setString(3, osoba.getEmail());
+            ps.setString(4, osoba.getBrojTelefona());
+            ps.setLong(5, osoba.getKategorija().getId());
+
+            int rowsInserted = ps.executeUpdate();
+            if (rowsInserted > 0) {
+                System.out.println("Osoba je uspešno dodata u bazu!");
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Doslo je do greske pri unosu: " + ex.getMessage());
+        }
     }
 }

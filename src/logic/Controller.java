@@ -76,4 +76,35 @@ public class Controller {
         return null;
     }
     
+    public boolean postojiTelEmail(String brojTelefona, String email){
+        try{
+            dbbr.connect();           
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }  
+        try{
+            boolean postoji = dbbr.postojiBrojIliEmail(brojTelefona, email);
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return false;
+    }
+    
+    public void fillPerson(Osoba osoba){
+        try{
+            dbbr.connect();           
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }  
+        try{
+            dbbr.insertPerson(osoba);
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+    }
+    
 }
