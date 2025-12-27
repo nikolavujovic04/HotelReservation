@@ -164,6 +164,7 @@ public class FormMakePerson extends javax.swing.JDialog {
             
             controller.fillPerson(osoba);
             JOptionPane.showMessageDialog(this, "Osoba je uspesno uneta u sistem", "DODATA OSOBA", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
         }
         catch(Exception ex){
             System.out.println("Doslo je do greske. "+ex.getMessage());

@@ -120,7 +120,7 @@ public class FormLogin extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(this, "Uspesno ste se ulogovali na sistem", "INFO", JOptionPane.INFORMATION_MESSAGE);
-                FormRezervacije rezervacije = new FormRezervacije(loged);
+                FormHotel rezervacije = new FormHotel(loged);
                 rezervacije.setVisible(true);
                 this.dispose();
             }
