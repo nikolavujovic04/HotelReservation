@@ -6,10 +6,11 @@
             <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/repository/db/DatabaseBroker.java</file>
             <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormLogin.java</file>
             <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/logic/Controller.java</file>
-            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormRezervacije.java</file>
+            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormHotel.java</file>
             <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormMakePerson.java</file>
             <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/domain/KategorijaOsobe.java</file>
             <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/domain/Osoba.java</file>
+            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormFindPerson.java</file>
         </group>
     </open-files>
 </project-private>

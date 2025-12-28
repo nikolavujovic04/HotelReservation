@@ -8,7 +8,7 @@ package domain;
  *
  * @author Nikola
  */
-public class Osoba {
+public class Osoba implements OpstiDomenskiObjekat{
     private long id;
     private String ime;
     private String prezime;
@@ -89,6 +89,46 @@ public class Osoba {
     @Override
     public String toString() {
         return this.ime+" "+this.prezime;
+    }
+
+    @Override
+    public String nazivTabele() {
+        return "osoba";
+    }
+
+    @Override
+    public String select() {
+        return "o.ime, o.prezime, o.email, o.brojTelefona, o.idKategorijaOsobe";
+    }
+
+    @Override
+    public String join() {
+        return " JOIN kategorijaosobe ko ON o.idKategorijaOsobe=ko.idKategorijaOsobe";
+    }
+
+    @Override
+    public String uslov() {
+        String uslov="";
+        if (ime != null && !ime.isEmpty()) {
+            uslov += " AND o.ime LIKE '%" + ime + "%'";
+        }       
+
+        if (kategorija != null) {
+            uslov += " AND o.idKategorijaOsobe = " + kategorija.getId();
+        }
+
+        return uslov;
+    }
+
+    @Override
+    public String koloneZaInsert() {
+        return "ime,prezime,email,brojTelefona,idKategorijaOsobe";
+    }
+
+    @Override
+    public String vrednostiZaInsert() {
+        return "'" + ime + "', '" + prezime + "', '" + email + "', '" +
+           brojTelefona + "', " + kategorija.getId();
     }
     
     

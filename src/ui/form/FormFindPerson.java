@@ -5,10 +5,12 @@
 package ui.form;
 
 import domain.KategorijaOsobe;
+import domain.Osoba;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import logic.Controller;
+import ui.compoment.PersonTableModel;
 
 /**
  *
@@ -19,10 +21,12 @@ public class FormFindPerson extends javax.swing.JDialog {
     /**
      * Creates new form FormFindPerson
      */
+    PersonTableModel table = new PersonTableModel(null);
     public FormFindPerson(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        fillCategories();
+        fillCategories();     
+        jTable1.setModel(table);
     }
 
     /**
@@ -75,7 +79,7 @@ public class FormFindPerson extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -86,7 +90,7 @@ public class FormFindPerson extends javax.swing.JDialog {
                             .addComponent(jTextField1))
                         .addGap(36, 36, 36)
                         .addComponent(jButton1)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,6 +117,9 @@ public class FormFindPerson extends javax.swing.JDialog {
         KategorijaOsobe kategorija = (KategorijaOsobe) jComboBox1.getSelectedItem();
         
         Controller controller = new Controller();
+        List<Osoba> osobe = controller.getAllPersons();
+        PersonTableModel prikaz = new PersonTableModel(osobe);
+        jTable1.setModel(prikaz);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

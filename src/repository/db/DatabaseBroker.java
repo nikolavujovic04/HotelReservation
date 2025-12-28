@@ -152,4 +152,40 @@ public class DatabaseBroker {
             System.out.println("Doslo je do greske pri unosu: " + ex.getMessage());
         }
     }
+    
+    public List<Osoba> findPersons(Osoba osoba){
+        String query = "SELECT o.ime,o.prezime,o.email,o.brojTelefona,ko.tipOsobe "
+                + " FROM osoba o JOIN kategorijaosobe ko ON o.idKategorijeOsobe=ko.idKategorijeOsobe"
+                + " WHERE o.ime LIKE ? AND o.idKategorijaOsobe=?";
+        try{
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, "%" + osoba.getIme() + "%");
+            ps.setLong(2, osoba.getKategorija().getId());
+
+            ResultSet rs = ps.executeQuery();
+            List<Osoba> osobe = new ArrayList<>();
+
+            while (rs.next()) {
+                Osoba o = new Osoba();
+                o.setIme(rs.getString("ime"));
+                o.setPrezime(rs.getString("prezime"));
+                o.setEmail(rs.getString("email"));
+                o.setBrojTelefona(rs.getString("brojTelefona"));
+
+                KategorijaOsobe ko = new KategorijaOsobe();
+                ko.setTipOsobe(rs.getString("tipOsobe"));
+                ko.setId(rs.getLong("idKategorijaOsobe"));
+                o.setKategorija(ko);
+
+                osobe.add(o);
+            }
+            
+            return osobe;
+            
+        }
+        catch(SQLException ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return null;
+    }
 }

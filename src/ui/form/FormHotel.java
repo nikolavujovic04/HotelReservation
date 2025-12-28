@@ -123,6 +123,11 @@ public class FormHotel extends javax.swing.JFrame {
         jMenu3.add(jMenuItem6);
 
         jMenuItem7.setText("Pretraga osoba");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem7);
 
         jMenuItem8.setText("Izmena osobe");
@@ -222,6 +227,10 @@ public class FormHotel extends javax.swing.JFrame {
         FormMakePerson forma = new FormMakePerson(this, true);
         forma.setVisible(true); 
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     /**
      * @param args the command line arguments

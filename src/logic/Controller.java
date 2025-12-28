@@ -107,4 +107,21 @@ public class Controller {
         }
     }
     
+    public List<Osoba> pretraziOsoba(Osoba osoba){
+        try{
+            dbbr.connect();           
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }  
+        try{
+            List<Osoba> osobe = dbbr.returnPersons();
+            return osobe;
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return null;
+    }
+    
 }

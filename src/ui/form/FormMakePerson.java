@@ -172,6 +172,8 @@ public class FormMakePerson extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -236,7 +238,7 @@ public class FormMakePerson extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Doslo je do greske.", "GRESKA", JOptionPane.ERROR_MESSAGE);
         }
         
-    }
+    } 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
