@@ -5,6 +5,7 @@
 package logic;
 
 import domain.KategorijaOsobe;
+import domain.OpstiDomenskiObjekat;
 import domain.Osoba;
 import domain.Recepcionar;
 import repository.db.DatabaseBroker;
@@ -122,6 +123,23 @@ public class Controller {
             System.out.println("Doslo je do greske. "+ex.getMessage());
         }
         return null;
+    }
+    
+    public boolean kreiraj(OpstiDomenskiObjekat odo){
+        try{
+            dbbr.connect();           
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }  
+        try{
+            boolean rezultat = dbbr.kreiraj(odo);
+            return rezultat;
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return false;
     }
     
 }

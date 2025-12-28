@@ -8,7 +8,7 @@ package domain;
  *
  * @author Nikola
  */
-public class Recepcionar {
+public class Recepcionar implements OpstiDomenskiObjekat{
     private long idRecepcionar;
     private String ime;
     private String prezime;
@@ -89,6 +89,40 @@ public class Recepcionar {
     @Override
     public String toString() {
         return this.ime+" "+this.prezime;
+    }
+
+    @Override
+    public String nazivTabele() {
+        return "recepcionar"
+    }
+
+    @Override
+    public String select() {
+        return " rc.ime,rc.prezime,rc.jmbg,rc.korisnickoIme,rc.sifra,rc.brojTelefona";
+    }
+
+    @Override
+    public String alijas() {
+        return "rc";
+    }
+
+    @Override
+    public String koloneZaInsert() {
+        return " (ime,prezime,jmbg,korisnickoIme,sifra,brojTelefona)";
+    }
+
+    @Override
+    public String vrednostiZaInsert() {
+        
+    }
+
+    @Override
+    public String join() {
+        return " JOIN rezervacija r ON rc.idRecepcionar=r.idRecepcionar JOIN recepcionartermindezurstva rtd ON rtd.idRecepcionar=rc.idRecepcionar";
+    }
+
+    @Override
+    public String uslov() {
     }
     
     

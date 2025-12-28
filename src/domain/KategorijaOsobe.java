@@ -8,7 +8,7 @@ package domain;
  *
  * @author Nikola
  */
-public class KategorijaOsobe {
+public class KategorijaOsobe implements OpstiDomenskiObjekat{
     private long id;
     private String tipOsobe;
     private double popust;
@@ -49,6 +49,39 @@ public class KategorijaOsobe {
     @Override
     public String toString() {
         return this.tipOsobe;
+    }
+
+    @Override
+    public String nazivTabele() {
+        return "kategorijaosobe";
+    }
+
+    @Override
+    public String select() {
+        return "ko.idKategorijaOsobe,ko.tipOsobe,ko.popust";
+    }
+
+    @Override
+    public String alijas() {
+        return "ko";
+    }
+
+    @Override
+    public String koloneZaInsert() {
+        return "(tipOsobe,popust)";
+    }
+
+    @Override
+    public String vrednostiZaInsert() {
+    }
+
+    @Override
+    public String join() {
+        return "";
+    }
+
+    @Override
+    public String uslov() {
     }
     
     

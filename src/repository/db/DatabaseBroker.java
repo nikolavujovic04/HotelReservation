@@ -4,6 +4,7 @@
  */
 package repository.db;
 import domain.KategorijaOsobe;
+import domain.OpstiDomenskiObjekat;
 import domain.Osoba;
 import domain.Recepcionar;
 import java.sql.*;
@@ -68,6 +69,19 @@ public class DatabaseBroker {
             System.out.println("Doslo je do greske. "+ex.getMessage());
         }
         return null;
+    }
+    
+    public boolean kreiraj(OpstiDomenskiObjekat odo){
+        try{
+            String query = "INSERT INTO "+odo.nazivTabele()+" "+odo.koloneZaInsert()+" VALUES ("+odo.vrednostiZaInsert()+")";
+            Statement statement = connection.createStatement();
+            int result = statement.executeUpdate(query);
+            return true;
+        }
+        catch(SQLException ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return false;
     }
     
     public List<Osoba> returnPersons(){

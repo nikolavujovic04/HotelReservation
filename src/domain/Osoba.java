@@ -122,13 +122,18 @@ public class Osoba implements OpstiDomenskiObjekat{
 
     @Override
     public String koloneZaInsert() {
-        return "ime,prezime,email,brojTelefona,idKategorijaOsobe";
+        return "(ime,prezime,email,brojTelefona,idKategorijaOsobe)";
     }
 
     @Override
     public String vrednostiZaInsert() {
         return "'" + ime + "', '" + prezime + "', '" + email + "', '" +
            brojTelefona + "', " + kategorija.getId();
+    }
+
+    @Override
+    public String alijas() {
+        return " o";
     }
     
     

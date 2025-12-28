@@ -11,6 +11,7 @@ package domain;
 public interface OpstiDomenskiObjekat {
     String nazivTabele();
     String select();
+    String alijas();
     String koloneZaInsert();
     String vrednostiZaInsert();
     String join();
