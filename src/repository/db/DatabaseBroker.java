@@ -104,14 +104,23 @@ public class DatabaseBroker {
     }
     
     public List<OpstiDomenskiObjekat> vrati(OpstiDomenskiObjekat odo){
-        try{
-            String query = "SELECT * FROM"+odo.nazivTabele();
+        String query = "SELECT * FROM"+odo.nazivTabele();
+        List<OpstiDomenskiObjekat> objekti = new ArrayList<>();
+        try{  
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(query);
-        }
-        catch(SQLException ex){
+           
+            while(rs.next()){      
+                objekti.add(odo.napuni(rs));
+            }
+            
+            return objekti;
             
         }
+        catch(SQLException ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return objekti;
     }
     
     public List<Osoba> returnPersons(){

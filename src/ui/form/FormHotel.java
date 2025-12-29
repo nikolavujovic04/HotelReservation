@@ -141,6 +141,11 @@ public class FormHotel extends javax.swing.JFrame {
         jMenu4.setText("Kategorija osobe");
 
         jMenuItem17.setText("Dodaj kategoriju");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem17);
 
         jMenuItem18.setText("Pretraga kategorija");
@@ -241,6 +246,11 @@ public class FormHotel extends javax.swing.JFrame {
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem18ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        FormMakePersonCategorie forma = new FormMakePersonCategorie(this, true);
+        forma.setVisible(true);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     /**
      * @param args the command line arguments

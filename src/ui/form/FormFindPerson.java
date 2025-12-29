@@ -126,10 +126,7 @@ public class FormFindPerson extends javax.swing.JDialog {
 
             Controller controller = new Controller();
             List<OpstiDomenskiObjekat> osobe = controller.pretrazi(osoba);
-            List<Osoba> listaOsoba = new ArrayList<>();
-            for (OpstiDomenskiObjekat odo : osobe) {
-                listaOsoba.add((Osoba) odo);
-            }
+            List<Osoba> listaOsoba = osoba.konvertovanje(osobe);
             PersonTableModel prikaz = new PersonTableModel(listaOsoba);
             jTable1.setModel(prikaz);
         }

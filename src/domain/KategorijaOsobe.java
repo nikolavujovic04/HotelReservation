@@ -76,6 +76,7 @@ public class KategorijaOsobe implements OpstiDomenskiObjekat{
 
     @Override
     public String vrednostiZaInsert() {
+        return "'" + tipOsobe + "', " + popust;
     }
 
     @Override
@@ -85,11 +86,16 @@ public class KategorijaOsobe implements OpstiDomenskiObjekat{
 
     @Override
     public String uslov() {
+        return "";
     }
 
     @Override
     public OpstiDomenskiObjekat napuni(ResultSet rs) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        KategorijaOsobe k = new KategorijaOsobe();
+        k.setId(rs.getLong("idKategorijaOsobe"));
+        k.setTipOsobe(rs.getString("tipOsobe"));
+        k.setPopust(rs.getDouble("popust"));
+        return k;
     }
     
     

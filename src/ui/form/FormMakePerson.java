@@ -5,6 +5,7 @@
 package ui.form;
 
 import domain.KategorijaOsobe;
+import domain.OpstiDomenskiObjekat;
 import domain.Osoba;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -136,7 +137,8 @@ public class FormMakePerson extends javax.swing.JDialog {
         try{
             Osoba osoba = new Osoba(jTextField1.getText(), jTextField3.getText(), jTextField4.getText(), (KategorijaOsobe) jComboBox1.getSelectedItem());
             Controller controller = new Controller();
-            List<Osoba> osobeBaza = controller.getAllPersons();
+            List<OpstiDomenskiObjekat> osobe = controller.pretrazi(osoba);
+            
             
             if(osoba.getImePrezime().isEmpty() || osoba.getBrojTelefona().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Sva polja moraju biti popunjena!", "GRESKA", JOptionPane.ERROR_MESSAGE);

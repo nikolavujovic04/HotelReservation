@@ -159,4 +159,21 @@ public class Controller {
         return null;
     }
     
+    public List<OpstiDomenskiObjekat> vrati(OpstiDomenskiObjekat odo){
+        try{
+            dbbr.connect();           
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }  
+        try{
+            List<OpstiDomenskiObjekat> objekti = dbbr.vrati(odo);
+            return objekti;
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return null;
+    }
+    
 }

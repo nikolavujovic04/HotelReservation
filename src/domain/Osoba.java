@@ -6,6 +6,9 @@ package domain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import logic.Controller;
 
 /**
  *
@@ -148,6 +151,15 @@ public class Osoba implements OpstiDomenskiObjekat{
         }
 
         return uslov;
+    }
+    
+    public List<Osoba> konvertovanje(List<OpstiDomenskiObjekat> osobe){
+        List<Osoba> listaOsoba = new ArrayList<>();
+        for (OpstiDomenskiObjekat odo : osobe) {
+            listaOsoba.add((Osoba) odo);
+        }
+        
+        return listaOsoba;
     }
     
     
