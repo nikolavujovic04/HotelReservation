@@ -15,7 +15,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class PersonTableModel extends AbstractTableModel{
     private final List<Osoba> osobe;
-    private String[] columns = {"Ime","Prezime","Email","Broj telefona","Kategorija"};
+    private String[] columns = {"Ime i prezime","Email","Broj telefona","Kategorija"};
     private Class[] classes = {String.class, String.class, String.class, String.class, KategorijaOsobe.class};
     
     public PersonTableModel(List<Osoba> osobe){
@@ -32,7 +32,7 @@ public class PersonTableModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 2;
+        return 4;
     }
 
     @Override
@@ -41,14 +41,12 @@ public class PersonTableModel extends AbstractTableModel{
         
         switch (columnIndex) {
             case 0:
-                return osoba.getIme();
-            case 2:
-                return osoba.getPrezime();
-            case 3:
+                return osoba.getImePrezime();
+            case 1:
                 return osoba.getEmail();
-            case 4:
+            case 2:
                 return osoba.getBrojTelefona();
-            case 5:
+            case 3:
                 return osoba.getKategorija().toString();
             default:
                 return "n/a";
@@ -61,14 +59,12 @@ public class PersonTableModel extends AbstractTableModel{
         
         switch (columnIndex) {
             case 0:
-                osoba.setIme(aValue.toString());
+                osoba.setImePrezime(aValue.toString());
             case 1:
-                osoba.setPrezime(aValue.toString());
-            case 2:
                 osoba.setEmail(aValue.toString());
-            case 3:
+            case 2:
                 osoba.setBrojTelefona(aValue.toString());
-            case 4:
+            case 3:
                 osoba.setKategorija((KategorijaOsobe) aValue);
             default:
                 throw new AssertionError();

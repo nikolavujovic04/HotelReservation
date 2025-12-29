@@ -5,7 +5,9 @@
 package ui.form;
 
 import domain.KategorijaOsobe;
+import domain.OpstiDomenskiObjekat;
 import domain.Osoba;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -25,6 +27,8 @@ public class FormFindPerson extends javax.swing.JDialog {
     public FormFindPerson(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        pack();
+        setLocationRelativeTo(null);
         fillCategories();     
         jTable1.setModel(table);
     }
@@ -113,14 +117,20 @@ public class FormFindPerson extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
         try{
             String imePrezime = jTextField1.getText();
             KategorijaOsobe kategorija = (KategorijaOsobe) jComboBox1.getSelectedItem();
+            Osoba osoba = new Osoba();
+            osoba.setImePrezime(imePrezime);
+            osoba.setKategorija(kategorija);
 
             Controller controller = new Controller();
-            List<Osoba> osobe = controller.getAllPersons();
-            PersonTableModel prikaz = new PersonTableModel(osobe);
+            List<OpstiDomenskiObjekat> osobe = controller.pretrazi(osoba);
+            List<Osoba> listaOsoba = new ArrayList<>();
+            for (OpstiDomenskiObjekat odo : osobe) {
+                listaOsoba.add((Osoba) odo);
+            }
+            PersonTableModel prikaz = new PersonTableModel(listaOsoba);
             jTable1.setModel(prikaz);
         }
         catch(Exception ex){

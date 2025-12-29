@@ -4,6 +4,9 @@
  */
 package domain;
 
+import java.sql.ResultSet;
+import java.sql.*;
+
 /**
  *
  * @author Nikola
@@ -16,4 +19,5 @@ public interface OpstiDomenskiObjekat {
     String vrednostiZaInsert();
     String join();
     String uslov();
+    OpstiDomenskiObjekat napuni(ResultSet rs) throws SQLException;
 }

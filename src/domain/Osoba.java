@@ -4,14 +4,17 @@
  */
 package domain;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Nikola
  */
 public class Osoba implements OpstiDomenskiObjekat{
+    
     private long id;
-    private String ime;
-    private String prezime;
+    private String imePrezime;
     private String email;
     private String brojTelefona;
     private KategorijaOsobe kategorija;
@@ -19,24 +22,20 @@ public class Osoba implements OpstiDomenskiObjekat{
     public Osoba() {
     }
 
-    public Osoba(long id, String ime, String prezime, String email, String brojTelefona, KategorijaOsobe kategorija) {
+    public Osoba(long id, String imePrezime, String email, String brojTelefona, KategorijaOsobe kategorija) {
         this.id = id;
-        this.ime = ime;
-        this.prezime = prezime;
+        this.imePrezime = imePrezime;
         this.email = email;
         this.brojTelefona = brojTelefona;
         this.kategorija = kategorija;
     }
 
-    public Osoba(String ime, String prezime, String email, String brojTelefona, KategorijaOsobe kategorija) {
-        this.ime = ime;
-        this.prezime = prezime;
+    public Osoba(String imePrezime, String email, String brojTelefona, KategorijaOsobe kategorija) {
+        this.imePrezime = imePrezime;
         this.email = email;
         this.brojTelefona = brojTelefona;
         this.kategorija = kategorija;
     }
-    
-    
 
     public long getId() {
         return id;
@@ -46,20 +45,12 @@ public class Osoba implements OpstiDomenskiObjekat{
         this.id = id;
     }
 
-    public String getIme() {
-        return ime;
+    public String getImePrezime() {
+        return imePrezime;
     }
 
-    public void setIme(String ime) {
-        this.ime = ime;
-    }
-
-    public String getPrezime() {
-        return prezime;
-    }
-
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
+    public void setImePrezime(String imePrezime) {
+        this.imePrezime = imePrezime;
     }
 
     public String getEmail() {
@@ -88,7 +79,7 @@ public class Osoba implements OpstiDomenskiObjekat{
 
     @Override
     public String toString() {
-        return this.ime+" "+this.prezime;
+        return this.imePrezime;
     }
 
     @Override
@@ -98,7 +89,7 @@ public class Osoba implements OpstiDomenskiObjekat{
 
     @Override
     public String select() {
-        return "o.ime, o.prezime, o.email, o.brojTelefona, o.idKategorijaOsobe";
+        return "o.idOsoba, o.imePrezime, o.email, o.brojTelefona, o.idKategorijaOsobe, ko.TipOsobe";
     }
 
     @Override
@@ -107,33 +98,56 @@ public class Osoba implements OpstiDomenskiObjekat{
     }
 
     @Override
-    public String uslov() {
-        String uslov="";
-        if (ime != null && !ime.isEmpty()) {
-            uslov += " AND o.ime LIKE '%" + ime + "%'";
-        }       
-
-        if (kategorija != null) {
-            uslov += " AND o.idKategorijaOsobe = " + kategorija.getId();
-        }
-
-        return uslov;
-    }
-
-    @Override
     public String koloneZaInsert() {
-        return "(ime,prezime,email,brojTelefona,idKategorijaOsobe)";
+        return "(imePrezime,email,brojTelefona,idKategorijaOsobe)";
     }
 
     @Override
     public String vrednostiZaInsert() {
-        return "'" + ime + "', '" + prezime + "', '" + email + "', '" +
-           brojTelefona + "', " + kategorija.getId();
+        return "'" + imePrezime + "', '" + email + "', '" +
+               brojTelefona + "', " + kategorija.getId();
     }
 
     @Override
     public String alijas() {
         return " o";
+    }
+
+    @Override
+    public OpstiDomenskiObjekat napuni(ResultSet rs) throws SQLException {
+        Osoba osoba = new Osoba();
+        osoba.setId(rs.getLong("idOsoba"));
+        osoba.setImePrezime(rs.getString("imePrezime"));
+        osoba.setEmail(rs.getString("email"));
+        osoba.setBrojTelefona(rs.getString("brojTelefona"));
+
+        KategorijaOsobe k = new KategorijaOsobe();
+        k.setId(rs.getInt("idKategorijaOsobe"));
+        k.setTipOsobe(rs.getString("TipOsobe"));
+        osoba.setKategorija(k);
+
+        return osoba;
+    }
+
+    @Override
+    public String uslov() {
+        String uslov = "";
+
+        boolean imaImePrezime = imePrezime != null && !imePrezime.isEmpty();
+        boolean imaKategoriju = kategorija != null && kategorija.getId() > -1;
+
+        if (imaImePrezime) {
+            uslov += " o.imePrezime LIKE '%" + imePrezime + "%'";
+        }
+
+        if (imaKategoriju) {
+            if (!uslov.isEmpty()) {
+                uslov += " AND ";
+            }
+            uslov += " o.idKategorijaOsobe = " + kategorija.getId();
+        }
+
+        return uslov;
     }
     
     

@@ -82,6 +82,36 @@ public class DatabaseBroker {
             System.out.println("Doslo je do greske. "+ex.getMessage());
         }
         return false;
+    } 
+    
+    public List<OpstiDomenskiObjekat> pretrazi(OpstiDomenskiObjekat odo){
+        String query = "SELECT "+odo.select()+" FROM "+odo.nazivTabele()+odo.alijas()+odo.join()+" WHERE "+odo.uslov();
+        List<OpstiDomenskiObjekat> objekti = new ArrayList<>();
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+           
+            while(rs.next()){      
+                objekti.add(odo.napuni(rs));
+            }
+            
+            return objekti;
+        }
+        catch(SQLException ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return objekti;
+    }
+    
+    public List<OpstiDomenskiObjekat> vrati(OpstiDomenskiObjekat odo){
+        try{
+            String query = "SELECT * FROM"+odo.nazivTabele();
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+        }
+        catch(SQLException ex){
+            
+        }
     }
     
     public List<Osoba> returnPersons(){
@@ -96,7 +126,7 @@ public class DatabaseBroker {
             while(rs.next()){
                 KategorijaOsobe kategorija = new KategorijaOsobe();
                 kategorija.setId(rs.getLong("idKategorijaOsobe"));
-                Osoba osoba = new Osoba(rs.getLong("idOsoba"), rs.getString("ime"), rs.getString("prezime"), rs.getString("email"), rs.getString("brojTelefona"), kategorija);
+                Osoba osoba = new Osoba(rs.getLong("idOsoba"), rs.getString("imePrezime"), rs.getString("email"), rs.getString("brojTelefona"), kategorija);
                 osobe.add(osoba);
             }
             

@@ -4,6 +4,9 @@
  */
 package domain;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Nikola
@@ -123,6 +126,11 @@ public class Recepcionar implements OpstiDomenskiObjekat{
 
     @Override
     public String uslov() {
+    }
+
+    @Override
+    public OpstiDomenskiObjekat napuni(ResultSet rs) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     

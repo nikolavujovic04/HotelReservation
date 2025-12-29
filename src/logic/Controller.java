@@ -142,4 +142,21 @@ public class Controller {
         return false;
     }
     
+    public List<OpstiDomenskiObjekat> pretrazi(OpstiDomenskiObjekat odo){
+        try{
+            dbbr.connect();           
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }  
+        try{
+            List<OpstiDomenskiObjekat> objekat = dbbr.pretrazi(odo);
+            return objekat;
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return null;
+    }
+    
 }
