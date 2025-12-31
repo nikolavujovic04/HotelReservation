@@ -5,6 +5,7 @@
 package ui.form;
 
 import domain.KategorijaOsobe;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 import logic.Controller;
@@ -95,6 +96,9 @@ public class FormMakePersonCategorie extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
             Controller controller = new Controller();
+            /*
+            List<KategorijaOsobe> sveKategorije = controller.vrati(new KategorijaOsobe());*/
+            //podsetnik da treba da sprecim unos iste kategorije u bazu
             double popust = (Double) jSpinner1.getValue();
             String tipOsobe = jTextField1.getText();
             KategorijaOsobe kategorija = new KategorijaOsobe();

@@ -86,7 +86,11 @@ public class KategorijaOsobe implements OpstiDomenskiObjekat{
 
     @Override
     public String uslov() {
-        return "";
+        String uslov = "";
+        if(tipOsobe!=null&&!tipOsobe.isEmpty()){
+            uslov += " WHERE ko.tipOsobe LIKE %'"+tipOsobe+"'%";
+        }        
+        return uslov;
     }
 
     @Override
