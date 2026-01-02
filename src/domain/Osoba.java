@@ -161,6 +161,11 @@ public class Osoba implements OpstiDomenskiObjekat{
         
         return listaOsoba;
     }
+
+    @Override
+    public String deleteUslov() {
+        return " WHERE idOsoba = "+id;
+    }
     
     
 }

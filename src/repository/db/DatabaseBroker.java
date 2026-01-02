@@ -123,6 +123,12 @@ public class DatabaseBroker {
         return objekti;
     }
     
+    public boolean obrisi(OpstiDomenskiObjekat odo){
+        try{
+            String query = "DELETE FROM "+odo.nazivTabele()+" WHERE "
+        }
+    }
+    
     public List<Osoba> returnPersons(){
         
         try{

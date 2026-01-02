@@ -96,7 +96,7 @@ public class Recepcionar implements OpstiDomenskiObjekat{
 
     @Override
     public String nazivTabele() {
-        return "recepcionar"
+        return "recepcionar";
     }
 
     @Override
@@ -116,7 +116,7 @@ public class Recepcionar implements OpstiDomenskiObjekat{
 
     @Override
     public String vrednostiZaInsert() {
-        
+        return "";
     }
 
     @Override
@@ -126,10 +126,16 @@ public class Recepcionar implements OpstiDomenskiObjekat{
 
     @Override
     public String uslov() {
+        return "";
     }
 
     @Override
     public OpstiDomenskiObjekat napuni(ResultSet rs) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String deleteUslov() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

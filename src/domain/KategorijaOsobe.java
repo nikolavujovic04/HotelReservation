@@ -101,6 +101,11 @@ public class KategorijaOsobe implements OpstiDomenskiObjekat{
         k.setPopust(rs.getDouble("popust"));
         return k;
     }
+
+    @Override
+    public String deleteUslov() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     
 }

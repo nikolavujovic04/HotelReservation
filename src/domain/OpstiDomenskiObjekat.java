@@ -19,5 +19,6 @@ public interface OpstiDomenskiObjekat {
     String vrednostiZaInsert();
     String join();
     String uslov();
+    String deleteUslov();
     OpstiDomenskiObjekat napuni(ResultSet rs) throws SQLException;
 }
