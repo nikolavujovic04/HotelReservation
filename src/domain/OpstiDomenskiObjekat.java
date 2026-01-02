@@ -20,5 +20,8 @@ public interface OpstiDomenskiObjekat {
     String join();
     String uslov();
     String deleteUslov();
+    String updateVrednosti();
+    String updateUslov();
+    void popuniPreparedStatement(PreparedStatement ps) throws SQLException;
     OpstiDomenskiObjekat napuni(ResultSet rs) throws SQLException;
 }

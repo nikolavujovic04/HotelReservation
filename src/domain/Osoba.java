@@ -4,6 +4,7 @@
  */
 package domain;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -165,6 +166,25 @@ public class Osoba implements OpstiDomenskiObjekat{
     @Override
     public String deleteUslov() {
         return " WHERE idOsoba = "+id;
+    }
+
+    @Override
+    public String updateVrednosti() {
+        return "imePrezime = ?, email = ?, brojTelefona = ?, idKategorijaOsobe = ?";
+    }
+
+    @Override
+    public String updateUslov() {
+        return "WHERE idOsoba = ?";
+    }
+
+    @Override
+    public void popuniPreparedStatement(PreparedStatement ps) throws SQLException{
+        ps.setString(1, imePrezime);
+        ps.setString(2, email);
+        ps.setString(3, brojTelefona);
+        ps.setLong(4, kategorija.getId());
+        ps.setLong(5, id);
     }
     
     

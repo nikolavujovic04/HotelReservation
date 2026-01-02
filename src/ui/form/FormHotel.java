@@ -39,38 +39,19 @@ public class FormHotel extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
+        jMenuItem26 = new javax.swing.JMenuItem();
+        jMenuItem27 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenu10 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem17 = new javax.swing.JMenuItem();
-        jMenuItem18 = new javax.swing.JMenuItem();
-        jMenuItem19 = new javax.swing.JMenuItem();
-        jMenuItem20 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem13 = new javax.swing.JMenuItem();
-        jMenuItem14 = new javax.swing.JMenuItem();
-        jMenuItem15 = new javax.swing.JMenuItem();
-        jMenuItem16 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem21 = new javax.swing.JMenuItem();
-        jMenuItem22 = new javax.swing.JMenuItem();
-        jMenuItem23 = new javax.swing.JMenuItem();
-        jMenuItem24 = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu9 = new javax.swing.JMenu();
-        jMenuItem25 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -85,36 +66,22 @@ public class FormHotel extends javax.swing.JFrame {
 
         jMenu1.setText("Rezervacija");
 
-        jMenuItem2.setText("Nova rezervacija");
-        jMenu1.add(jMenuItem2);
+        jMenuItem26.setText("Dodaj novu");
+        jMenuItem26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem26ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem26);
 
-        jMenuItem3.setText("Pretraga rezervacija");
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem5.setText("Izmena rezervacije");
-        jMenu1.add(jMenuItem5);
+        jMenuItem27.setText("Pregled");
+        jMenu1.add(jMenuItem27);
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Recepcionar");
-
-        jMenuItem4.setText("Dodaj recepcionara");
-        jMenu2.add(jMenuItem4);
-
-        jMenuItem10.setText("Pretraga recepcionara");
-        jMenu2.add(jMenuItem10);
-
-        jMenuItem11.setText("Izmena recepcionara");
-        jMenu2.add(jMenuItem11);
-
-        jMenuItem12.setText("Brisanje recepcionara");
-        jMenu2.add(jMenuItem12);
-
-        jMenuBar1.add(jMenu2);
-
         jMenu3.setText("Osoba");
 
-        jMenuItem6.setText("Dodaj osobu");
+        jMenuItem6.setText("Dodaj novu");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem6ActionPerformed(evt);
@@ -122,90 +89,49 @@ public class FormHotel extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItem6);
 
-        jMenuItem7.setText("Pretraga osoba");
+        jMenuItem2.setText("Pregled");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(jMenu6);
+
+        jMenu10.setText("Recepcionar");
+
+        jMenuItem3.setText("Dodaj novog");
+        jMenu10.add(jMenuItem3);
+
+        jMenuItem4.setText("Pregled");
+        jMenu10.add(jMenuItem4);
+
+        jMenuItem5.setText("Termin dezurstva");
+        jMenu10.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu10);
+
+        jMenu2.setText("Soba");
+
+        jMenuItem7.setText("Dodaj novu");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem7);
+        jMenu2.add(jMenuItem7);
 
-        jMenuItem8.setText("Izmena osobe");
-        jMenu3.add(jMenuItem8);
-
-        jMenuItem9.setText("Brisanje osobe");
-        jMenu3.add(jMenuItem9);
-
-        jMenuBar1.add(jMenu3);
-
-        jMenu4.setText("Kategorija osobe");
-
-        jMenuItem17.setText("Dodaj kategoriju");
-        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem8.setText("Pregled");
+        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem17ActionPerformed(evt);
+                jMenuItem8ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem17);
+        jMenu2.add(jMenuItem8);
 
-        jMenuItem18.setText("Pretraga kategorija");
-        jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem18ActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jMenuItem18);
-
-        jMenuItem19.setText("Izmena kategorije");
-        jMenu4.add(jMenuItem19);
-
-        jMenuItem20.setText("Brisanje kategorije");
-        jMenu4.add(jMenuItem20);
-
-        jMenuBar1.add(jMenu4);
-
-        jMenu5.setText("Soba");
-
-        jMenuItem13.setText("Dodaj sobu");
-        jMenu5.add(jMenuItem13);
-
-        jMenuItem14.setText("Pretraga soba");
-        jMenu5.add(jMenuItem14);
-
-        jMenuItem15.setText("Izmena sobe");
-        jMenu5.add(jMenuItem15);
-
-        jMenuItem16.setText("Brisanje sobe");
-        jMenu5.add(jMenuItem16);
-
-        jMenuBar1.add(jMenu5);
-        jMenuBar1.add(jMenu6);
-
-        jMenu7.setText("Termin dezurstva");
-
-        jMenuItem21.setText("Novi termin");
-        jMenu7.add(jMenuItem21);
-
-        jMenuItem22.setText("Pretraga termina");
-        jMenu7.add(jMenuItem22);
-
-        jMenuItem23.setText("Izmena termina");
-        jMenu7.add(jMenuItem23);
-
-        jMenuItem24.setText("Brisanje termina");
-        jMenu7.add(jMenuItem24);
-
-        jMenuBar1.add(jMenu7);
-
-        jMenu8.setText("Podesavanja");
-        jMenuBar1.add(jMenu8);
-
-        jMenu9.setText("O programu");
-
-        jMenuItem25.setText("Informacije");
-        jMenu9.add(jMenuItem25);
-
-        jMenuBar1.add(jMenu9);
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -238,21 +164,23 @@ public class FormHotel extends javax.swing.JFrame {
         forma.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void jMenuItem26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem26ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem26ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         FormFindPerson forma = new FormFindPerson(this, true);
+        forma.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        FormAddRoom forma = new FormAddRoom(this, true);
         forma.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
-    private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-
-        FormFindPersonCategorie forma = new FormFindPersonCategorie(this, true);
-        forma.setVisible(true);
-    }//GEN-LAST:event_jMenuItem18ActionPerformed
-
-    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-        FormMakePersonCategorie forma = new FormMakePersonCategorie(this, true);
-        forma.setVisible(true);
-    }//GEN-LAST:event_jMenuItem17ActionPerformed
+    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+        
+    }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -293,39 +221,20 @@ public class FormHotel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem13;
-    private javax.swing.JMenuItem jMenuItem14;
-    private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem17;
-    private javax.swing.JMenuItem jMenuItem18;
-    private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem20;
-    private javax.swing.JMenuItem jMenuItem21;
-    private javax.swing.JMenuItem jMenuItem22;
-    private javax.swing.JMenuItem jMenuItem23;
-    private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem25;
+    private javax.swing.JMenuItem jMenuItem26;
+    private javax.swing.JMenuItem jMenuItem27;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }

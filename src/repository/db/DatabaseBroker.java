@@ -125,54 +125,32 @@ public class DatabaseBroker {
     
     public boolean obrisi(OpstiDomenskiObjekat odo){
         try{
-            String query = "DELETE FROM "+odo.nazivTabele()+" WHERE "
-        }
-    }
-    
-    public List<Osoba> returnPersons(){
-        
-        try{
-            String query = "SELECT * FROM osoba";
-        
+            String query = "DELETE FROM "+odo.nazivTabele()+" "+odo.deleteUslov();
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+            int obrisano = statement.executeUpdate(query);
             
-            List<Osoba> osobe = new ArrayList<>();
-            while(rs.next()){
-                KategorijaOsobe kategorija = new KategorijaOsobe();
-                kategorija.setId(rs.getLong("idKategorijaOsobe"));
-                Osoba osoba = new Osoba(rs.getLong("idOsoba"), rs.getString("imePrezime"), rs.getString("email"), rs.getString("brojTelefona"), kategorija);
-                osobe.add(osoba);
-            }
-            
-            return osobe;
+            return obrisano>0;
         }
         catch(SQLException ex){
             System.out.println("Doslo je do greske. "+ex.getMessage());
         }
         
-        return null;
+        return false;
     }
     
-    
-    public List<KategorijaOsobe> returnCategories(){
+    public boolean izmeni(OpstiDomenskiObjekat odo){
         try{
-            String query = "SELECT * FROM kategorijaosobe";
-            Statement statement = connection.createStatement();
-            
-            ResultSet rs = statement.executeQuery(query);
-            List<KategorijaOsobe> kategorije = new ArrayList<>();
-            while(rs.next()){
-                KategorijaOsobe kategorija = new KategorijaOsobe( rs.getLong("idKategorijaOsobe"), rs.getString("tipOsobe"), rs.getDouble("popust"));
-                kategorije.add(kategorija);
-            }
-            return kategorije;
+            String query = "UPDATE "+odo.nazivTabele()+""
+                    + " SET "+odo.updateVrednosti()+""
+                    + " WHERE "+odo.updateUslov();
+            PreparedStatement ps = connection.prepareStatement(query);
+            odo.popuniPreparedStatement(ps);
+            return ps.executeUpdate()>0;
         }
         catch(SQLException ex){
             System.out.println("Doslo je do greske. "+ex.getMessage());
+            return false;
         }
-        
-        return null;
     }
     
     public boolean postojiBrojIliEmail(String brojTelefona, String email) {
@@ -192,33 +170,13 @@ public class DatabaseBroker {
         return false;
     }
     
-    public void insertPerson(Osoba osoba) {
-        String query = "INSERT INTO osoba(ime, prezime, email, brojTelefona, idKategorijaOsobe) VALUES (?,?,?,?,?)";
-        try{
-            PreparedStatement ps = connection.prepareStatement(query);
-            ps.setString(1, osoba.getIme());
-            ps.setString(2, osoba.getPrezime());
-            ps.setString(3, osoba.getEmail());
-            ps.setString(4, osoba.getBrojTelefona());
-            ps.setLong(5, osoba.getKategorija().getId());
-
-            int rowsInserted = ps.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("Osoba je uspešno dodata u bazu!");
-            }
-
-        } catch (SQLException ex) {
-            System.out.println("Doslo je do greske pri unosu: " + ex.getMessage());
-        }
-    }
-    
     public List<Osoba> findPersons(Osoba osoba){
         String query = "SELECT o.ime,o.prezime,o.email,o.brojTelefona,ko.tipOsobe "
                 + " FROM osoba o JOIN kategorijaosobe ko ON o.idKategorijeOsobe=ko.idKategorijeOsobe"
                 + " WHERE o.ime LIKE ? AND o.idKategorijaOsobe=?";
         try{
             PreparedStatement ps = connection.prepareStatement(query);
-            ps.setString(1, "%" + osoba.getIme() + "%");
+            //ps.setString(1, "%" + osoba.getIme() + "%");
             ps.setLong(2, osoba.getKategorija().getId());
 
             ResultSet rs = ps.executeQuery();
@@ -226,8 +184,8 @@ public class DatabaseBroker {
 
             while (rs.next()) {
                 Osoba o = new Osoba();
-                o.setIme(rs.getString("ime"));
-                o.setPrezime(rs.getString("prezime"));
+                //o.setIme(rs.getString("ime"));
+                //o.setPrezime(rs.getString("prezime"));
                 o.setEmail(rs.getString("email"));
                 o.setBrojTelefona(rs.getString("brojTelefona"));
 

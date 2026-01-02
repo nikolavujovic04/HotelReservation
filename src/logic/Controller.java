@@ -41,42 +41,6 @@ public class Controller {
         return null;
     }
     
-    public List<KategorijaOsobe> getAllCategories(){
-        try{
-            dbbr.connect();           
-        }
-        catch(Exception ex){
-            System.out.println("Doslo je do greske. "+ex.getMessage());
-        }
-        
-        try{
-            List<KategorijaOsobe> kategorije = dbbr.returnCategories();
-            return kategorije;
-        }
-        catch(Exception ex){
-            System.out.println("Doslo je do greske. "+ex.getMessage());
-        }
-        return null;
-    }
-    
-    public List<Osoba> getAllPersons(){
-        
-        try{
-            dbbr.connect();           
-        }
-        catch(Exception ex){
-            System.out.println("Doslo je do greske. "+ex.getMessage());
-        }  
-        try{
-            List<Osoba> osobe = dbbr.returnPersons();
-            return osobe;
-        }
-        catch(Exception ex){
-            System.out.println("Doslo je do greske. "+ex.getMessage());
-        }
-        return null;
-    }
-    
     public boolean postojiTelEmail(String brojTelefona, String email){
         try{
             dbbr.connect();           
@@ -91,38 +55,6 @@ public class Controller {
             System.out.println("Doslo je do greske. "+ex.getMessage());
         }
         return false;
-    }
-    
-    public void fillPerson(Osoba osoba){
-        try{
-            dbbr.connect();           
-        }
-        catch(Exception ex){
-            System.out.println("Doslo je do greske. "+ex.getMessage());
-        }  
-        try{
-            dbbr.insertPerson(osoba);
-        }
-        catch(Exception ex){
-            System.out.println("Doslo je do greske. "+ex.getMessage());
-        }
-    }
-    
-    public List<Osoba> pretraziOsoba(Osoba osoba){
-        try{
-            dbbr.connect();           
-        }
-        catch(Exception ex){
-            System.out.println("Doslo je do greske. "+ex.getMessage());
-        }  
-        try{
-            List<Osoba> osobe = dbbr.returnPersons();
-            return osobe;
-        }
-        catch(Exception ex){
-            System.out.println("Doslo je do greske. "+ex.getMessage());
-        }
-        return null;
     }
     
     public boolean kreiraj(OpstiDomenskiObjekat odo){
@@ -174,6 +106,24 @@ public class Controller {
             System.out.println("Doslo je do greske. "+ex.getMessage());
         }
         return null;
+    }
+    
+    public boolean obrisi(OpstiDomenskiObjekat odo){
+        try{
+            dbbr.connect();
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }  
+        
+        try{
+            boolean obrisan = dbbr.obrisi(odo);
+            return obrisan;
+        }
+        catch(Exception ex){
+            System.out.println("Doslo je do greske. "+ex.getMessage());
+        }
+        return false;
     }
     
 }
