@@ -21,7 +21,7 @@ public class DatabaseBroker {
     
     public void connect(){
         try{
-            String url = "jdbc:mysql://localhost:3306/hotel";
+            String url = "jdbc:mysql://localhost:3306/hotelProsoft";
             String root="root";
             String pass="";
             
@@ -53,8 +53,7 @@ public class DatabaseBroker {
             if(rs.next()){
                 Recepcionar loged = new Recepcionar();
                 loged.setIdRecepcionar(rs.getLong("idRecepcionar"));
-                loged.setIme(rs.getString("ime"));
-                loged.setPrezime(rs.getString("prezime"));
+                loged.setImePrezime(rs.getString("imePrezime"));
                 loged.setKorisnickoIme(rs.getString("korisnickoIme"));
                 loged.setSifra(rs.getString("sifra"));
                 loged.setJmbg(rs.getString("jmbg"));

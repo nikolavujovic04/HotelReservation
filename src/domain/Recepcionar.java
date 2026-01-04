@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class Recepcionar implements OpstiDomenskiObjekat{
     private long idRecepcionar;
-    private String ime;
+    private String imePrezime;
     private String prezime;
     private String jmbg;
     private String korisnickoIme;
@@ -24,9 +24,9 @@ public class Recepcionar implements OpstiDomenskiObjekat{
     public Recepcionar() {
     }
 
-    public Recepcionar(long idRecepcionar, String ime, String prezime, String jmbg, String korisnickoIme, String sifra, String brojTelefona) {
+    public Recepcionar(long idRecepcionar, String imePrezime, String prezime, String jmbg, String korisnickoIme, String sifra, String brojTelefona) {
         this.idRecepcionar = idRecepcionar;
-        this.ime = ime;
+        this.imePrezime = imePrezime;
         this.prezime = prezime;
         this.jmbg = jmbg;
         this.korisnickoIme = korisnickoIme;
@@ -42,12 +42,12 @@ public class Recepcionar implements OpstiDomenskiObjekat{
         this.idRecepcionar = idRecepcionar;
     }
 
-    public String getIme() {
-        return ime;
+    public String getImePrezime() {
+        return imePrezime;
     }
 
-    public void setIme(String ime) {
-        this.ime = ime;
+    public void setImePrezime(String imePrezime) {
+        this.imePrezime = imePrezime;
     }
 
     public String getPrezime() {
