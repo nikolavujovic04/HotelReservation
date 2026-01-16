@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/domain/OpstiDomenskiObjekat.java</file>
+            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormHotel.java</file>
+            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormMakePerson.java</file>
+            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormMakeReservation.java</file>
+            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormView.java</file>
+            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormFindPersonCategorie.java</file>
             <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormFindPerson.java</file>
-            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/repository/db/DatabaseBroker.java</file>
-            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/domain/Recepcionar.java</file>
-            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormLogin.java</file>
         </group>
     </open-files>
 </project-private>
