@@ -5,6 +5,9 @@
         <group>
             <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/domain/OpstiDomenskiObjekat.java</file>
             <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormFindPerson.java</file>
+            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/repository/db/DatabaseBroker.java</file>
+            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/domain/Recepcionar.java</file>
+            <file>file:/C:/ProjektovanjeSoftveraVezbe/Projekat/src/ui/form/FormLogin.java</file>
         </group>
     </open-files>
 </project-private>
