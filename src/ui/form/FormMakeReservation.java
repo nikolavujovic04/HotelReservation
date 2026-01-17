@@ -4,6 +4,14 @@
  */
 package ui.form;
 
+import domain.KategorijaOsobe;
+import domain.OpstiDomenskiObjekat;
+import domain.Soba;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import logic.Controller;
+
 /**
  *
  * @author Nikola
@@ -15,6 +23,9 @@ public class FormMakeReservation extends javax.swing.JFrame {
      */
     public FormMakeReservation() {
         initComponents();
+        pack();
+        setLocationRelativeTo(null);
+        fillComboRooms();
     }
 
     /**
@@ -281,12 +292,28 @@ public class FormMakeReservation extends javax.swing.JFrame {
         });
     }
 
+    private void fillComboRooms(){
+        Controller controller = new Controller();
+            Soba soba = new Soba();
+            List<OpstiDomenskiObjekat> roomList = controller.vrati(soba);
+
+            DefaultComboBoxModel<OpstiDomenskiObjekat> modelCategories = new DefaultComboBoxModel<>();
+
+            for (OpstiDomenskiObjekat room : roomList) {
+                if(room!=null){
+                    modelCategories.addElement(room);
+                }
+            }
+
+            jComboBox1.setModel(modelCategories);
+            jComboBox1.setSelectedIndex(-1);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<OpstiDomenskiObjekat> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
